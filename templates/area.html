@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+                    <label>
+                       Area
+                    </label>
+                     <select name="area" id="areaid" class="">
+                         <option>--select--</option>
+                         {% for j in area %}
+                         <option value="{{ j.0 }}">{{ j.1 }}</option>
+                         {% endfor %}
+                     </select>
+</body>
+</html>

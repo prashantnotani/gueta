@@ -1,0 +1,208 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>GUETA</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <meta name="keywords"
+          content="Edulearn Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+            />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!--// Meta tag Keywords -->
+
+    <!-- Custom-Files -->
+    <!-- Bootstrap-Core-Css -->
+    <link rel="stylesheet" href={% static "css/bootstrap.css" %}>
+    <!-- Style-Css -->
+    <link rel="stylesheet" href={% static "css/style.css" %} type="text/css" media="all"/>
+    <!-- Font-Awesome-Icons-Css -->
+    <link rel="stylesheet" href={% static "css/fontawesome-all.css" %}>
+    <!-- //Custom-Files -->
+
+    <!-- Web-Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+          rel="stylesheet">
+    <!-- //Web-Fonts -->
+
+</head>
+
+<body>
+<!-- header -->
+{% include 'commonheader.html' %}
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Student Registration</li>
+    </ol>
+</nav>
+<!-- breadcrumb -->
+<!-- //banner -->
+
+<!-- register -->
+<div class="login-w3ls py-5">
+    <div class="container py-xl-5 py-lg-3">
+        <h3 class="title text-capitalize font-weight-light text-dark text-center mb-5">Student Registration
+
+        </h3>
+        <!-- content -->
+        <div class="sub-main-w3 pt-md-4">
+            <form action="\website\studreginsert" method="get">
+                <div class="form-style-agile form-group">
+                    <label>
+                        Your Name
+                        <i class="fas fa-user"></i>
+                    </label>
+                    <input placeholder="Your Name" class="form-control" name="Name" type="text" required="">
+                </div>
+
+                <div class="form-style-agile form-group">
+                    <label>
+                        Email
+                        <i class="fas fa-envelope"></i>
+                    </label>
+                    <input placeholder="Email" class="form-control" name="Email" type="email" required="">
+                </div>
+
+                <div class="form-style-agile form-group">
+                    <label>
+                        Password
+                        <i class="fas fa-unlock-alt"></i>
+                    </label>
+                    <input placeholder="Password" class="form-control" name="Password" id="password1" type="password"
+                           required="">
+                </div>
+
+                <div class="form-style-agile form-group">
+                    <label>
+                        Confirm Password
+                        <i class="fas fa-unlock-alt"></i>
+                    </label>
+                    <input placeholder="Confirm Password" class="form-control" name="Confirm Password" id="password2"
+                           type="password" required="">
+                </div>
+
+
+                <div class="form-style-agile form-group">
+
+                    Semester
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+
+                    </select>
+                </div>
+
+
+
+
+
+                <input type="submit" value="Register">
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- footer -->
+<footer>
+    <div class="container py-4">
+        <div class="row py-xl-5 py-sm-3">
+            <div class="col-lg-6 map">
+                <h2 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">
+
+                </h2>
+
+
+            </div>
+            <div class="col-lg-6 contact-agileits-w3layouts mt-lg-0 mt-4">
+                <h4 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">
+                    <span class="font-weight-bold"></span>
+                </h4>
+
+                <p class="conta-para-style border-left pl-4">
+                </p>
+
+                <div class="subscribe-w3ls my-xl-5 my-4">
+                    <h6 class="text-white text-capitalize mb-4">subscribe our newsletter</h6>
+
+                    <form action="#" method="post" class="subscribe_form">
+                        <input class="form-control" type="email" name="email" placeholder="Enter your email..."
+                               required="">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                    </form>
+                </div>
+                <p class="para-agileits-w3layouts text-white">
+                    <i class="fas fa-map-marker pr-3"></i>1, Ashram Rd, Near Gujarat Vidyapeeth, Sattar Taluka Society, Incometax Circle, Ahmedabad, Gujarat 380014</p>
+
+                <p class="para-agileits-w3layouts text-white my-sm-3 my-2">
+                    <i class="fas fa-phone pr-3"></i>+91-079 2754 1830</p>
+
+                <p class="para-agileits-w3layouts">
+                    <i class="far fa-envelope-open pr-2"></i>
+                    <a href="mailto:mail@example.com" class=" text-white">supportgueta@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-agiles py-3">
+        <div class="container">
+            <div class="row">
+                <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">© 2018 All Rights
+                    Reserved
+                </p>
+                <!-- social icons -->
+                <div class="social-icons text-lg-right text-center col-lg-4 mt-lg-0 mt-3">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#" class="fab fa-facebook-f icon-border facebook rounded-circle"> </a>
+                        </li>
+                        <li class="mx-2">
+                            <a href="#" class="fab fa-twitter icon-border twitter rounded-circle"> </a>
+                        </li>
+                        <li>
+                            <a href="#" class="fab fa-google-plus-g icon-border googleplus rounded-circle"> </a>
+                        </li>
+                        <li class="ml-2">
+                            <a href="#" class="fas fa-rss icon-border rss rounded-circle"> </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //social icons -->
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- //footer -->
+
+</body>
+
+</html>
