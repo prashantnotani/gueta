@@ -1,0 +1,413 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>Upload question paper</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <meta name="keywords"
+          content="Edulearn Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+            />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+    }
+    </script>
+    <!--// Meta tag Keywords -->
+
+    <!-- Custom-Files -->
+    <!-- Bootstrap-Core-Css -->
+    <link rel="stylesheet" href={% static "css/bootstrap.css" %}>
+    <!-- Style-Css -->
+    <link rel="stylesheet" href={% static "css/style.css" %} type="text/css" media="all"/>
+    <!-- Font-Awesome-Icons-Css -->
+    <link rel="stylesheet" href={% static "css/fontawesome-all.css" %}>
+    <!-- //Custom-Files -->
+
+    <!-- Web-Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+          rel="stylesheet">
+
+    <script>
+
+        function getarea(){
+            var cid = document.getElementById('cityid').value;
+
+            var url = "/website/getarea?cid=" +cid;
+
+            var req = new XMLHttpRequest();
+
+            req.onreadystatechange = showarea;
+
+            function showarea(){
+
+                if(req.readyState == 4){
+                    alert(req.responseText)
+                   document.getElementById('areaid').innerHTML = req.responseText;
+                }
+            }
+
+            req.open('GET', url, true);
+            req.send();
+
+        }
+         function getcarea(){
+            var cid = document.getElementById('ccityid').value;
+
+            var url = "/website/getarea?cid=" +cid;
+
+            var req = new XMLHttpRequest();
+
+            req.onreadystatechange = showarea;
+
+            function showarea(){
+
+                if(req.readyState == 4){
+                    alert(req.responseText)
+                   document.getElementById('careaid').innerHTML = req.responseText;
+                }
+            }
+
+            req.open('GET', url, true);
+            req.send();
+
+        }
+
+    </script>
+    <!-- //Web-Fonts -->
+
+</head>
+
+<body>
+
+<!-- header -->
+
+    <header>
+        <!-- top header -->
+        {% comment %}<div class="top-head-w3ls py-2 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <h1 class="text-capitalize text-white col-7">
+                        <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>welcome to edulearn</h1>
+                    <!-- social icons -->
+                    <div class="social-icons text-right col-5">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" class="fab fa-facebook-f icon-border facebook rounded-circle"> </a>
+                            </li>
+                            <li class="mx-2">
+                                <a href="#" class="fab fa-twitter icon-border twitter rounded-circle"> </a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-google-plus-g icon-border googleplus rounded-circle"> </a>
+                            </li>
+                            <li class="ml-2">
+                                <a href="#" class="fas fa-rss icon-border rss rounded-circle"> </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //social icons -->
+                </div>
+            </div>
+        </div>{% endcomment %}
+        <!-- //top header -->
+        <!-- middle header -->
+        <div class="middle-w3ls-nav py-2">
+            <div class="container">
+               <div class="row">
+                    <img src="{% static '\images\logo.jpeg' %}" style="height: 100px; width: 100px" usemap="">
+                 <a class="logo font-italic font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">Gueta</a>
+                    <div class="col-lg-8 right-info-agiles mt-lg-0 mt-sm-3 mt-1">
+                        <div class="row">
+                            <div class="col-sm-4 nav-middle">
+
+                                <div class="agile-addresmk">
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-6 nav-middle mt-sm-0 mt-2">
+
+                                <div class="agile-addresmk">
+
+                                </div>
+                            </div>
+                            {%   if request.session.lname %}
+                            <div class="col-sm-4 col-6 top-login-butt text-right mt-sm-2">
+                                <h6>HI,{{ request.session.lname }}</h6>
+                                <h6><a href="/website/signout">Sign out</a></h6>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //middle header -->
+    </header>
+    <!-- //header -->
+
+    <!-- banner -->
+    <div class="banner-agile-2">
+        <!-- navigation -->
+        <div class="navigation-w3ls">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
+                <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                 aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav justify-content-center">
+                        <li class="nav-item active">
+                        <a class="nav-link text-white" href="index.html">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="about.html">ABOUT-US</a>
+                    </li>
+
+
+                         <li class="nav-item">
+                            <a class="nav-link text-white" href="notification.html">NOTIFICATION</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                EVENTS
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="adde.html">Add Events</a>
+                                <a class="dropdown-item" href="events.html">View</a>
+
+                            </div>
+                        </li>
+
+
+                <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                EXAMINATION
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Question Bank.html">Question Bank</a>
+                                <a class="dropdown-item" href="events.html"></a>
+
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="upload.html">Upload</a>
+                        </li>
+                        {%   if  not request.session.lname%}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="facreg.html">REGISTRATION</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="login.html">LOGIN</a>
+                        </li>
+                        {% endif %}
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- //navigation -->
+    </div>
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Upload Question paper</li>
+    </ol>
+</nav>
+
+
+<!-- login -->
+<div class="login-w3ls py-5">
+    <div class="container py-xl-5 py-lg-3">
+        <h3 class="title text-capitalize font-weight-light text-dark text-center mb-5">Upload Question paper
+
+        </h3>
+        <!-- content -->
+        <div class="sub-main-w3 pt-md-4">
+            <form name="myform" action="/website/disnot" onsubmit="return FormValidation();" >
+                <div class="form-style-agile form-group">
+                    <label style="color:#000000">
+                         Name
+                    </label>
+                    <input placeholder="Enter Notification Name" class="form-control" name="name"  type="text">
+
+                </div>
+
+
+
+                <div class="form-style-agile form-group">
+                    <label style="color:#000000">
+                        Upload File
+                    </label>
+                   <input type="file"placeholder="Enter your Message" class="form-control"></textarea>
+                    <span id="message" style="color: red"></span>
+                </div>
+
+                <!-- //switch -->
+                <input type="submit"  value="upload File">
+
+
+
+            </form>
+        </div>
+        <!-- //content -->
+    </div>
+</div>
+<!-- //login -->
+
+<!-- brands -->
+
+<!-- //brands -->
+
+<!-- footer -->
+<footer>
+		<div class="container py-4">
+			<div class="row py-xl-5 py-sm-3">
+				<div class="col-lg-6 map">
+					<h2 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">our
+						<span class="font-weight-bold">directions</span>
+					</h2>
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d58748.29853872592!2d72.51903479414618!3d23.032264896595485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x395e844f97ed4d91%3A0x3c8af58f0d8c39b4!2scu+shah+arts+college+lal+darwaja!3m2!1d23.0276714!2d72.58187509999999!5e0!3m2!1sen!2sin!4v1552411109431" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <div class="conta-posi-w3ls p-4 rounded">
+						<h5 class="text-white font-weight-bold mb-3">Address</h5>
+						<p>1, Ashram Rd, Near Gujarat Vidyapeeth, Sattar Taluka Society,
+                    Incometax Circle, Ahmedabad, Gujarat 380014</p>
+					</div>
+				</div>
+				<div class="col-lg-6 contact-agileits-w3layouts mt-lg-0 mt-4">
+					<h4 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">get in
+						<span class="font-weight-bold">touch</span>
+					</h4>
+					<p class="conta-para-style border-left pl-4">If you have any questions about the services we provide simply use the form below.</p>
+					<div class="subscribe-w3ls my-xl-5 my-4">
+						<h6 class="text-white text-capitalize mb-4">subscribe our newsletter</h6>
+						<form action="#" method="post" class="subscribe_form">
+							<input class="form-control" type="email" name="email" placeholder="Enter your email..." required="">
+							<button type="submit" class="btn btn-primary submit">Submit</button>
+						</form>
+					</div>
+					<p class="para-agileits-w3layouts text-white">
+						<i class="fas fa-map-marker pr-3"></i>1, Ashram Rd, Near Gujarat Vidyapeeth, Sattar Taluka Society,
+                    Incometax Circle, Ahmedabad, Gujarat 380014</p>
+
+					<p class="para-agileits-w3layouts text-white my-sm-3 my-2">
+						<i class="fas fa-phone pr-3"></i>079-25506703</p>
+					<p class="para-agileits-w3layouts">
+						<i class="far fa-envelope-open pr-2"></i>
+						<a href="mailto:mail@example.com" class=" text-white">guetaonline@gmail.com</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="copyright-agiles py-3">
+			<div class="container">
+				<div class="row">
+					<p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">GUETA
+
+					</p>
+					<!-- social icons -->
+					<div class="social-icons text-lg-right text-center col-lg-4 mt-lg-0 mt-3">
+						<ul class="list-unstyled">
+							<li>
+								<a href="#" class="fab fa-facebook-f icon-border facebook rounded-circle"> </a>
+							</li>
+							<li class="mx-2">
+								<a href="#" class="fab fa-twitter icon-border twitter rounded-circle"> </a>
+							</li>
+							<li>
+								<a href="#" class="fab fa-google-plus-g icon-border googleplus rounded-circle"> </a>
+							</li>
+							<li class="ml-2">
+								<a href="#" class="fas fa-rss icon-border rss rounded-circle"> </a>
+							</li>
+						</ul>
+					</div>
+					<!-- //social icons -->
+				</div>
+			</div>
+		</div>
+	</footer>
+<!-- //footer -->
+<!-- Js files -->
+<!-- JavaScript -->
+<script src={% static "js/jquery-2.2.3.min.js" %}></script>
+<!-- Default-JavaScript-File -->
+<script src={% static "js/bootstrap.js" %}></script>
+<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+<!-- banner slider -->
+<script src={% static "js/slider.js" %}></script>
+<!-- //banner slider -->
+
+<!-- testimonial-plugin -->
+<script src={% static "js/mislider.js" %}></script>
+<script>
+    jQuery(function ($) {
+        var slider = $('.mis-stage').miSlider({
+            //  The height of the stage in px. Options: false or positive integer. false = height is calculated using maximum slide heights. Default: false
+            stageHeight: 320,
+            //  Number of slides visible at one time. Options: false or positive integer. false = Fit as many as possible.  Default: 1
+            slidesOnStage: false,
+            //  The location of the current slide on the stage. Options: 'left', 'right', 'center'. Defualt: 'left'
+            slidePosition: 'center',
+            //  The slide to start on. Options: 'beg', 'mid', 'end' or slide number starting at 1 - '1','2','3', etc. Defualt: 'beg'
+            slideStart: 'mid',
+            //  The relative percentage scaling factor of the current slide - other slides are scaled down. Options: positive number 100 or higher. 100 = No scaling. Defualt: 100
+            slideScaling: 150,
+            //  The vertical offset of the slide center as a percentage of slide height. Options:  positive or negative number. Neg value = up. Pos value = down. 0 = No offset. Default: 0
+            offsetV: -5,
+            //  Center slide contents vertically - Boolean. Default: false
+            centerV: true,
+            //  Opacity of the prev and next button navigation when not transitioning. Options: Number between 0 and 1. 0 (transparent) - 1 (opaque). Default: .5
+            navButtonsOpacity: 1,
+        });
+    });
+</script>
+<!-- //testimonial-plugin -->
+
+<!-- numscroller-js-file -->
+<script src={% static "js/numscroller-1.0.js" %}></script>
+<!-- //numscroller-js-file -->
+
+<!-- smooth scrolling -->
+<script src={% static "js/SmoothScroll.min.js" %}></script>
+<!-- //smooth scrolling -->
+
+<!-- move-top -->
+<script src={% static "js/move-top.js" %}></script>
+<!-- easing -->
+<script src={% static "js/easing.js" %}></script>
+<!--  necessary snippets for few javascript files -->
+<script src={% static "js/edulearn.js" %}></script>
+
+<!-- //Js files -->
+
+
+
+</body>
+
+</html>

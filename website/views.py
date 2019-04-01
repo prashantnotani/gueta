@@ -17,7 +17,7 @@ def login(request):
 def facreg(request):
     try:
 
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor()
         query = "select * from city"
         cursor.execute(query)
@@ -33,7 +33,7 @@ def getarea(request):
     try:
 
         cid = int(request.GET.get('cid'))
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor()
         query = "select * from area where cid = '%d'" %cid
         cursor.execute(query)
@@ -65,7 +65,7 @@ def savedata(request):
         ccity = int(request.GET.get("ccity"))
         carea = int(request.GET.get("carea"))
         cname = request.GET.get("collegeName")
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor(buffered=True)
 
         query3 = "insert into profreg(firstName,middleName,lastName,email,password,mobile,designation,cname) VALUES ('%s','%s','%s','%s','%s','%s','%d','%s','%s')"%(firstName,middleName,lastName,email,password,cpassword,mobile,designation,cname)
@@ -134,31 +134,30 @@ def upload(request):
         return render(request,"upload.html")
     else:
         return render(request,"login.html")
+#
+#def load(request):
+ #   try:
+  #      conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+   #     cursor = conn.cursor()
+    #    if request.method == 'POST' and request.FILES['myfile']:
+     #       myfile = request.FILES['myfile']
+    #        name = request.POST.get('name')
+     #       fs = FileSystemStorage()
+      #      filename= myfile.name
+       #     extension = filename.split('.')
+        #    uploaded_file_name = name + "." +extension[1]
+         #   filename = fs.save(uploaded_file_name, myfile)
+         #   uploaded_file_url = fs.url(filename)
+          #  query = "insert into uploadr(researchpaper,name1) VALUES ('%s','%s')" %(uploaded_file_url,name)
+           # cursor.execute(query)
+            #conn.commit()
+            #return HttpResponse(index(request))
 
-def load(request):
-    try:
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
-        cursor = conn.cursor()
-        if request.method == 'POST' and request.FILES['myfile']:
-            myfile = request.FILES['myfile']
-
-            name = request.POST.get('name')
-            fs = FileSystemStorage()
-            filename= myfile.name
-            extension = filename.split('.')
-            uploaded_file_name = name + "." +extension[1]
-            filename = fs.save(uploaded_file_name, myfile)
-            uploaded_file_url = fs.url(filename)
-            query = "insert into uploadr(researchpaper,name1) VALUES ('%s','%s')" %(uploaded_file_url,name)
-            cursor.execute(query)
-            conn.commit()
-            return HttpResponse(index(request))
-
-    except Error as e:
-        print(e)
-    finally:
-        cursor.close()
-        conn.close()
+    #except Error as e:
+     #   print(e)
+    #finally:
+     #   cursor.close()
+      #  conn.close()
 
 
 
@@ -171,7 +170,7 @@ def eins(request):
         eventDate=request.GET.get("eventDate")
         eventDescription = request.GET.get("eventDescription")
 
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor()
         query = "insert into event(event_name,event_description,event_date) VALUES ('%s','%s','%s')"%(eventName,eventDescription,eventDate)
         cursor.execute(query)
@@ -186,14 +185,30 @@ def eins(request):
 
 def event(request):
     try:
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor()
-        query = "select * from event"
+        query = "SELECT * FROM event ORDER BY event_id DESC LIMIT 3"
         cursor.execute(query)
         rec = cursor.fetchall()
 
         conn.commit()
         return render(request,"events.html",{'rec':rec})
+    except Error as e:
+        print(e)
+    finally:
+        cursor.close()
+        conn.close()
+
+def viewmore(request):
+    try:
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
+        cursor = conn.cursor()
+        query = "SELECT * FROM event "
+        cursor.execute(query)
+        rec = cursor.fetchall()
+
+        conn.commit()
+        return render(request,"viewmoreevents.html",{'rec':rec})
     except Error as e:
         print(e)
     finally:
@@ -208,10 +223,10 @@ def disnot(request):
      try:
         name=request.GET.get("name")
         message = request.GET.get("message")
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor()
         query = "insert into notification(name1,message) VALUES ('%s','%s') "%(name,message)
-        email = EmailMessage(name, message, to=['prashantnotani@gmail.com'])
+        email = EmailMessage(name, message, to=['axyz7674@gmail.com'])
         email.send()
         cursor.execute(query)
         conn.commit()
@@ -227,7 +242,7 @@ def searche(request):
     try:
         params=request.GET.get("param")
         print("**********",params)
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor()
         query = "select * from event WHERE event_name LIKE ('%s')"%("%" + params+ "%",)
         cursor.execute(query)
@@ -246,7 +261,7 @@ def searche(request):
 def ventreg(request):
       try:
 
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor()
         query = "select * from city"
         cursor.execute(query)
@@ -275,7 +290,7 @@ def avedata(request):
         ccity = int(request.GET.get("ccity"))
         carea = int(request.GET.get("carea"))
         cname = request.GET.get("collegeName")
-        conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
         cursor = conn.cursor(buffered=True)
 
         query3 = "insert into eventreg(firstName,middleName,lastName,email,mobile,designation,cname) VALUES ('%s','%s','%s','%s','%d','%s','%s')"%(firstName,middleName,lastName,email,mobile,designation,cname)
@@ -297,7 +312,10 @@ def avedata(request):
         conn.close()
 
 def importfile(request):
-    return render(request,"importfile.html")
+    if(request.session.get('lname')):
+        return render(request,"importfile.html")
+    else:
+        return render(request,"login.html")
 
 def contact(request):
     try:
@@ -332,3 +350,23 @@ def contact(request):
         cursor.close()
         conn.close()
 
+def download(request):
+
+    try:
+        conn = mysql.connector.connect(host='localhost', database='newschema', user='root', password='admin')
+        cursor = conn.cursor()
+        query = "select * from downloadfile"
+        cursor.execute(query)
+        rec = cursor.fetchall()
+
+        conn.commit()
+        return render(request,"download.html",{'rec':rec})
+    except Error as e:
+        print(e)
+    finally:
+        cursor.close()
+        conn.close()
+
+def fileupload(request):
+    print("uploadform")
+    return render(request,'uploadform.html')

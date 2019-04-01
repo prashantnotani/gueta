@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'ventreg',views.ventreg,name="ventreg"),
     url(r'avedata',views.avedata,name="avedata"),
     url(r'^importfile',views.importfile,name="importfile"),
-    url(r'^contact',views.contact,name="contact")
+    url(r'^contact',views.contact,name="contact"),
+    url(r'download', views.download, name='download'),
+
 
 ]

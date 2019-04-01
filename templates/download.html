@@ -1,21 +1,17 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx" xmlns="http://www.w3.org/1999/html">
 
 <head>
-
-    <link rel-"icon" type-"img/jpg" href-"templates/images/favicon.jpg"/>
-    <title>GUETA</title>
-
+    <title>Download Form</title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"/>
     <meta name="keywords"
+          content="Edulearn Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
             />
-    <meta name="google-signin-client_id"
-          content="343490643698-01fjc4vbk3j14k7tt135nq28nsegqrrm.apps.googleusercontent.com">
-
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -24,32 +20,46 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-         function init() {
-        gapi.load('auth2', function() {
-            console.log(gapi.auth2.init());
-        });
-        }
-       function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            console.log(auth2);
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-            
-       }
+
+
     </script>
+
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+        #contact #form input.captcha {
+            background: #222222 url(http://img3.uploadhouse.com/fileuploads/17737/17737011310213e71805ecf2292144cbbecf42ad.png) no-repeat 10px 9px;
+        }
+
+        #contact #captcha span {
+            width: 44px;
+        }
+
+        #contact #captcha input {
+            background: url(http://img3.uploadhouse.com/fileuploads/17737/17737011310213e71805ecf2292144cbbecf42ad.png) no-repeat scroll 0 0 transparent;
+            margin: 5px 0 0;
+            padding: 0;
+            border: medium none;
+            cursor: pointer;
+            width: 15px;
+        }
+    </style>
+
     <!--// Meta tag Keywords -->
 
     <!-- Custom-Files -->
     <!-- Bootstrap-Core-Css -->
     <link rel="stylesheet" href={% static "css/bootstrap.css" %}>
-    <!-- Testimonials-Css -->
-    <link href={% static "css/mislider.css" %} rel="stylesheet" type="text/css"/>
-    <link href={% static "css/mislider-custom.css" %} rel="stylesheet" type="text/css"/>
     <!-- Style-Css -->
     <link rel="stylesheet" href={% static "css/style.css" %} type="text/css" media="all"/>
     <!-- Font-Awesome-Icons-Css -->
     <link rel="stylesheet" href={% static "css/fontawesome-all.css" %}>
+
+    <link rel="stylesheet" href={% static "css/captcha.css" %}>
+
+
     <!-- //Custom-Files -->
 
     <!-- Web-Fonts -->
@@ -57,84 +67,83 @@
           rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
           rel="stylesheet">
+
+
     <!-- //Web-Fonts -->
 
 </head>
 
 <body>
-<!-- header -->
+
 <header>
-
-
+    <!-- top header -->
+    {% comment %}<div class="top-head-w3ls py-2 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <h1 class="text-capitalize text-white col-7">
+                        <i class="fas fa-book text-dark bg-white p-2 rounded-circle mr-3"></i>welcome to edulearn</h1>
+                    <!-- social icons -->
+                    <div class="social-icons text-right col-5">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" class="fab fa-facebook-f icon-border facebook rounded-circle"> </a>
+                            </li>
+                            <li class="mx-2">
+                                <a href="#" class="fab fa-twitter icon-border twitter rounded-circle"> </a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-google-plus-g icon-border googleplus rounded-circle"> </a>
+                            </li>
+                            <li class="ml-2">
+                                <a href="#" class="fas fa-rss icon-border rss rounded-circle"> </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //social icons -->
+                </div>
+            </div>
+        </div>{% endcomment %}
+    <!-- //top header -->
     <!-- middle header -->
     <div class="middle-w3ls-nav py-2">
         <div class="container">
             <div class="row">
-                <!-- <img src="{% static '\images\favicon.jpg' %}" style="height: 100px; width: 100px"> -->
-                 <a class="logo font-italic font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">Gueta</a>
+                <img src="{% static '\images\logo.jpeg' %}" style="height: 100px; width: 100px" usemap="">
+                <a class="logo font-italic font-weight-bold col-lg-4 text-lg-left text-center"
+                   href="index.html">Gueta</a>
 
                 <div class="col-lg-8 right-info-agiles mt-lg-0 mt-sm-3 mt-1">
                     <div class="row">
-                            <div class="col-sm-4 nav-middle">
+                        <div class="col-sm-4 nav-middle">
 
-                                <div class="agile-addresmk">
-                                    <p>
+                            <div class="agile-addresmk">
+                                <p>
 
-                                    </p>
-                                </div>
+                                </p>
                             </div>
-                            <div class="col-sm-4 col-6 nav-middle mt-sm-0 mt-2">
+                        </div>
+                        <div class="col-sm-4 col-6 nav-middle mt-sm-0 mt-2">
 
-                                <div class="agile-addresmk">
+                            <div class="agile-addresmk">
 
-                                </div>
                             </div>
-                            {%   if request.session.lname %}
+                        </div>
+                        {% if request.session.lname %}
                             <div class="col-sm-4 col-6 top-login-butt text-right mt-sm-2">
                                 <h6>HI,{{ request.session.lname }}</h6>
-                                 <h6><a href="/website/signout" onclick="signOut();">Sign out</a></h6>
+                                <h6><a href="/website/signout" onclick="signOut();">Sign out</a></h6>
                             </div>
-                            {% endif %}
-                        </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- //middle header -->
 </header>
-<!-- //header -->
-
-<!-- banner -->
-<div class="banner-agile">
-    <ul class="slider">
-        <li class="active">
-            <div class="banner-w3ls-1">
-            </div>
-        </li>
-        <li>
-            <div class="banner-w3ls-2">
-            </div>
-        </li>
-        <li>
-            <div class="banner-w3ls-3">
-            </div>
-        </li>
-
-    </ul>
-    <ul class="pager">
-        <li data-index="0"></li>
-        <li data-index="1"></li>
-        <li data-index="2"></li>
-
-    </ul>
-    <div class="banner-text-posi-w3ls">
-        <div class="banner-text-whtree">
-
-        </div>
-    </div>
-
+<div class="banner-agile-2">
     <!-- navigation -->
-     <div class="navigation-w3ls">
+    <div class="navigation-w3ls">
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
             <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -149,85 +158,92 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="about.html">About Us</a>
+                        <a class="nav-link text-white" href="about.html">ABOUT- US</a>
                     </li>
 
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="notification.html">Notification</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Events
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="adde.html">Add Events</a>
-                                <a class="dropdown-item" href="events.html">View</a>
-                                
-                            </div>
-                        </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="notification.html">NOTIFICATION</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            EVENTS
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="adde.html">Add Events</a>
+                            <a class="dropdown-item" href="events.html">View</a>
+
+                        </div>
+                    </li>
 
 
-                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Student's Corner
-                            </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            EXAMINATION
+                        </a>
 
-                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="question_bank.html">Question Bank</a>
-                                <a class="dropdown-item" href="/website/fileupload">Upload Files</a>
-                                <a class="dropdown-item" href="/website/download">Download</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="Question Bank.html">Question Bank</a>
+                            <a class="dropdown-item" href="events.html"></a>
 
-                            </div>
-                         </li>
+                        </div>
+                    </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link text-white" href="importfile.html">Import</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="upload.html">Upload</a>
+                    </li>
+                    {% if  not request.session.lname %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="facreg.html">REGISTRATION</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="login.html">LOGIN</a>
+                        </li>
+                    {% endif %}
 
-                        {%   if  not request.session.lname%}
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="facreg.html">Registration</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="login.html">Login</a>
-                            </li>
-                        {% endif %}
-                        
                 </ul>
             </div>
         </nav>
     </div>
+
     <!-- //navigation -->
 </div>
-<!-- //banner -->
-<div class="about py-5">
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Upload Form</li>
+    </ol>
+</nav>
+
+<!-- login -->
+<div class="login-w3ls py-5">
     <div class="container py-xl-5 py-lg-3">
+        <h3 class="title text-capitalize font-weight-light text-dark text-center mb-5">download File
 
-        <div class="row pt-md-4">
-            <div class="col-lg-6 about_right">
-                <h3 class="text-capitalize text-right font-weight-light font-italic">Message from our President
-
-                </h3>
-
-                <p class="text-right my-4 pr-4 border-right">I would like to thank to all members and creators who gave
-                    their active support in creation of this website
-                    and helping us achieve for a common goal.
-            </div>
-            <div class="col-lg-6 left-img-agikes mt-lg-0 mt-sm-4 mt-3 text-center">
-                <img src="{% static '\images\president.jpg' %}" alt="Image" class="img-fluid"/>
-
-                <p> Dr.Pradeep Prajapati</p>
-
-
-            </div>
+        </h3>
+        <!-- content -->
+        <div class="sub-main-w3 pt-md-4">
+            {% for i in rec %}
+                {{ i.0 }}
+                <iframe src="{{ i.1 }}" height="100px" width="100px"></iframe>
+                <a href="{{ i.1 }}">Download</a>
+                {{ i.2 }}
+            {% endfor %}
         </div>
+        <!-- //content -->
     </div>
 </div>
-	<!-- //about -->
-
-
+<!-- //login -->
 <!-- footer -->
 <footer>
     <div class="container py-4">
@@ -307,6 +323,8 @@
 <!-- //footer -->
 
 
+</body>
+
 <!-- Js files -->
 <!-- JavaScript -->
 <script src={% static "js/jquery-2.2.3.min.js" %}></script>
@@ -338,7 +356,7 @@
             //  Center slide contents vertically - Boolean. Default: false
             centerV: true,
             //  Opacity of the prev and next button navigation when not transitioning. Options: Number between 0 and 1. 0 (transparent) - 1 (opaque). Default: .5
-            navButtonsOpacity: 1,
+            navButtonsOpacity: 1
         });
     });
 </script>
@@ -360,7 +378,5 @@
 <script src={% static "js/edulearn.js" %}></script>
 
 <!-- //Js files -->
-
-</body>
 
 </html>
