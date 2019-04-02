@@ -164,14 +164,15 @@
     <div class="banner-agile-2">
         <!-- navigation -->
         <div class="navigation-w3ls">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
-                <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                 aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-                    <ul class="navbar-nav justify-content-center">
-                        <li class="nav-item active">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
+            <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item ">
                         <a class="nav-link text-white" href="index.html">Home
                             <span class="sr-only">(current)</span>
                         </a>
@@ -180,9 +181,11 @@
                         <a class="nav-link text-white" href="about.html">About Us</a>
                     </li>
 
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="gallery.html">Gallery</a>
+
+                        <li class="nav-item active">
+                            <a class="nav-link text-white" href="notification.html">Notification
+
+                            </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -191,26 +194,42 @@
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="adde.html">Add Events</a>
                                 <a class="dropdown-item" href="events.html">View</a>
-                                
+
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="upload.html">Upload</a>
-                        </li>
-                        {%   if  not request.session.lname%}
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="facreg.html">Registration</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="login.html">Login</a>
-                        </li>
-                        {% endif %}
-                        
 
-                    </ul>
-                </div>
-            </nav>
-        </div>
+
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Student's Corner
+                            </a>
+
+                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="question_bank.html">Question Bank</a>
+                                <a class="dropdown-item" href="/website/fileupload">Upload Files</a>
+                                <a class="dropdown-item" href="/website/download">Download</a>
+
+                            </div>
+                         </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="importfile.html">Import</a>
+                    </li>
+
+                        {%   if  not request.session.lname%}
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="facreg.html">Registration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="login.html">Login</a>
+                            </li>
+                        {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+    </div>
         <!-- //navigation -->
     </div> 
 <!-- breadcrumb -->
@@ -276,14 +295,25 @@
     <div class="container py-4">
         <div class="row py-xl-5 py-sm-3">
             <div class="col-lg-6 map">
-                <h2 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">
-
+                <h2 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">our
+                    <span class="font-weight-bold">directions</span>
                 </h2>
 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d58748.29853872592!2d72.51903479414618!3d23.032264896595485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x395e844f97ed4d91%3A0x3c8af58f0d8c39b4!2scu+shah+arts+college+lal+darwaja!3m2!1d23.0276714!2d72.58187509999999!5e0!3m2!1sen!2sin!4v1552411109431"
+                        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div class="conta-posi-w3ls p-4 rounded">
+                    <h5 class="text-white font-weight-bold mb-3">Address</h5>
 
+                    <p>1, Ashram Rd, Near Gujarat Vidyapeeth, Sattar Taluka Society,
+                        Incometax Circle, Ahmedabad, Gujarat 380014</p>
+                </div>
             </div>
             <div class="col-lg-6 contact-agileits-w3layouts mt-lg-0 mt-4">
+                <h4 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">get in
+                    <span class="font-weight-bold">touch</span>
+                </h4>
 
+                <p class="conta-para-style border-left pl-4"></p>
 
                 <div class="subscribe-w3ls my-xl-5 my-4">
                     <h6 class="text-white text-capitalize mb-4">subscribe our newsletter</h6>
@@ -299,11 +329,11 @@
                     Incometax Circle, Ahmedabad, Gujarat 380014</p>
 
                 <p class="para-agileits-w3layouts text-white my-sm-3 my-2">
-                    <i class="fas fa-phone pr-3"></i>032 625 4592</p>
+                    <i class="fas fa-phone pr-3"></i>079-25506703</p>
 
                 <p class="para-agileits-w3layouts">
                     <i class="far fa-envelope-open pr-2"></i>
-                    <a href="mailto:mail@example.com" class=" text-white">info@example.com</a>
+                    <a href="mailto:mail@example.com" class=" text-white">guetaonline@gmail.com</a>
                 </p>
             </div>
         </div>
@@ -311,8 +341,8 @@
     <div class="copyright-agiles py-3">
         <div class="container">
             <div class="row">
-                <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">© 2018 GUETA. All
-                    Rights Reserved
+                <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">GUETA
+
                 </p>
                 <!-- social icons -->
                 <div class="social-icons text-lg-right text-center col-lg-4 mt-lg-0 mt-3">

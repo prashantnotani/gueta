@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'getarea', views.getarea, name='getarea'),
     url(r'signout',views.signout,name="signout"),
     url(r'upload',views.upload,name="upload"),
-    url(r'load',views.load,name="load"),
+    url(r'daol',views.daol,name="daol"),
     url(r'event',views.event,name="event"),
     url(r'adde',views.adde,name="adde"),
     url(r'eins',views.eins,name="eins"),
@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'avedata',views.avedata,name="avedata"),
     url(r'^importfile',views.importfile,name="importfile"),
     url(r'^contact',views.contact,name="contact"),
-    url(r'download', views.download, name='download'),
+    url(r'^download', views.download, name='download'),
 
 
 ]

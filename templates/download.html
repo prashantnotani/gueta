@@ -108,7 +108,7 @@
     <div class="middle-w3ls-nav py-2">
         <div class="container">
             <div class="row">
-                <img src="{% static '\images\logo.jpeg' %}" style="height: 100px; width: 100px" usemap="">
+               <!--  <img src="{% static '\images\logo.jpeg' %}" style="height: 100px; width: 100px" usemap=""> -->
                 <a class="logo font-italic font-weight-bold col-lg-4 text-lg-left text-center"
                    href="index.html">Gueta</a>
 
@@ -143,7 +143,7 @@
 </header>
 <div class="banner-agile-2">
     <!-- navigation -->
-    <div class="navigation-w3ls">
+     <div class="navigation-w3ls">
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
             <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -158,55 +158,51 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="about.html">ABOUT- US</a>
+                        <a class="nav-link text-white" href="about.html">About Us</a>
                     </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="notification.html">NOTIFICATION</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            EVENTS
-                        </a>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="notification.html">Notification</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Events
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="adde.html">Add Events</a>
+                                <a class="dropdown-item" href="events.html">View</a>
 
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="adde.html">Add Events</a>
-                            <a class="dropdown-item" href="events.html">View</a>
-
-                        </div>
-                    </li>
+                            </div>
+                        </li>
 
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            EXAMINATION
-                        </a>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Student's Corner
+                            </a>
 
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="Question Bank.html">Question Bank</a>
-                            <a class="dropdown-item" href="events.html"></a>
+                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="question_bank.html">Question Bank</a>
+                                <a class="dropdown-item" href="/website/fileupload">Upload Files</a>
+                                <a class="dropdown-item" href="/website/download">Download</a>
 
-                        </div>
-                    </li>
-
+                            </div>
+                         </li>
 
                     <li class="nav-item">
                         <a class="nav-link text-white" href="importfile.html">Import</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="upload.html">Upload</a>
-                    </li>
-                    {% if  not request.session.lname %}
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="facreg.html">REGISTRATION</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="login.html">LOGIN</a>
-                        </li>
-                    {% endif %}
+
+                        {%   if  not request.session.lname%}
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="facreg.html">Registration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="login.html">Login</a>
+                            </li>
+                        {% endif %}
 
                 </ul>
             </div>
