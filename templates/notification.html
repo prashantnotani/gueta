@@ -4,7 +4,26 @@
 <html lang="zxx" xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <title>Registration</title>
+    <title>Notification</title>
+    <style type="text/css">
+    .validation,.success {
+        border: 1px solid;
+        margin: 10px 0px;
+        padding: 15px 10px 15px 50px;
+        background-repeat: no-repeat;
+        background-position: 10px center;
+    }
+    .validation{
+        color: #D63301;
+        background-color: #FFCCBA;
+        background-image: url('https://i.imgur.com/GnyDvKN.png');
+    }
+    .success {
+        color: #4F8A10;
+        background-color: #DFF2BF;
+        background-image: url('https://i.imgur.com/Q9BGTuy.png');
+    }
+    </style>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"/>
@@ -22,7 +41,7 @@
             window.scrollTo(0, 1);
         }
 
-    }
+    
     </script>
     <!--// Meta tag Keywords -->
 
@@ -128,7 +147,7 @@
         <div class="middle-w3ls-nav py-2">
             <div class="container">
                <div class="row">
-                    <a class="logo font-italic font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">G.U.E.T.A</a>
+                    <a class="logo font-italic font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">Gueta</a>
                     <div class="col-lg-8 right-info-agiles mt-lg-0 mt-sm-3 mt-1">
                         <div class="row">
                             <div class="col-sm-4 nav-middle">
@@ -238,7 +257,7 @@
         <li class="breadcrumb-item">
             <a href="index.html">Home</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Registration Form</li>
+        <li class="breadcrumb-item active" aria-current="page">Add Notification</li>
     </ol>
 </nav>
 
@@ -249,15 +268,25 @@
         <h3 class="title text-capitalize font-weight-light text-dark text-center mb-5">Add Notification
 
         </h3>
+
         <!-- content -->
         <div class="sub-main-w3 pt-md-4">
-            <form name="myform" action="/website/disnot" onsubmit="return FormValidation();" >
+
+            <form name="myform" action="/website/disnot" onsubmit="return validate();" >
+                <div >
+                    <span id="titleError"  ></span>
+                    <span id="messageError" ></span>
+                </div>
+                <div class="isa_error">
+                    
+                    <span id="titleError"></span>.
+                </div>
                 <div class="form-style-agile form-group">
                     <label style="color:#000000">
                          Name
                     </label>
-                    <input placeholder="Enter Notification Name" class="form-control" name="name"  type="text">
-                    
+                    <input placeholder="Enter Notification Title" id="notificationTitle" class="form-control" name="notificationTitle"  type="text">
+                  
                 </div>
                 
 
@@ -266,8 +295,7 @@
                     <label style="color:#000000">
                         Message
                     </label>
-                   <textarea name="message"  placeholder="Enter your Message" class="form-control"></textarea>
-                    <span id="message" style="color: red"></span>
+                   <textarea name="notificationMessage" id="notificationMessage" placeholder="Enter your Message" class="form-control"></textarea>
                 </div>
 
 
@@ -341,7 +369,7 @@
     <div class="copyright-agiles py-3">
         <div class="container">
             <div class="row">
-                <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">GUETA
+                <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">Gueta
 
                 </p>
                 <!-- social icons -->
@@ -419,6 +447,28 @@
 <!--  necessary snippets for few javascript files -->
 <script src={% static "js/edulearn.js" %}></script>
 
+
+<script type="text/javascript">
+
+function validate()
+{
+    
+    if($("#notificationTitle").val()==null || $("#notificationTitle").val()=="")
+    {
+        $("#titleError").html("please enter notification title")
+        $("#titleError").addClass("validation")
+        return false;
+    }
+    if($("#notificationMessage").val()==null || $("#notificationMessage").val()=="")
+    {
+        $("#messageError").html("please enter notification Message")
+        $("#messageError").addClass("validation")
+        return false;
+    }
+   
+}
+
+</script>
 <!-- //Js files -->
 
 

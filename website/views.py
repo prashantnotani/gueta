@@ -222,16 +222,18 @@ def notification(request):
 
 def disnot(request):
      try:
-        name=request.GET.get("name")
-        message = request.GET.get("message")
+        notificationTitle=request.GET.get("notificationTitle")
+        notificationMessage = request.GET.get("notificationMessage")
         conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
         cursor = conn.cursor()
-        query = "insert into notification(name1,message) VALUES ('%s','%s') "%(name,message)
-        email = EmailMessage(name, message, to=['prashantnotani@gmail.com'])
+        query = "insert into notification(name1,message) VALUES ('%s','%s') "%(notificationTitle,notificationMessage)
+        email = EmailMessage(notificationTitle, notificationMessage, to=['prashantnotani@gmail.com'])
         email.send()
         cursor.execute(query)
         conn.commit()
-        return HttpResponse(index(request))
+        rec="done"
+        return redirect('notification')
+
      except Error as e:
         print(e)
      finally:
