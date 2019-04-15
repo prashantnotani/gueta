@@ -7,6 +7,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 import openpyxl
 from openpyxl import load_workbook
+from django.shortcuts import redirect
 # Create your views here.
 def index(requests):
     return render(requests,"index.html")
@@ -112,7 +113,7 @@ def logindata(request):
             conn.commit()
             request.session['lname']=lname
             if(request.session.get('lname')):
-                return render(request,"index.html")
+                return redirect('index')
             else:
                 print("error")
     except Error as e:
@@ -127,7 +128,7 @@ def about(request):
 
 def signout(request):
     del request.session['lname']
-    return render(request,"index.html")
+    return redirect('index')
 
 def upload(request):
     if(request.session.get('lname')):
@@ -226,7 +227,7 @@ def disnot(request):
         conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
         cursor = conn.cursor()
         query = "insert into notification(name1,message) VALUES ('%s','%s') "%(name,message)
-        email = EmailMessage(name, message, to=['axyz7674@gmail.com'])
+        email = EmailMessage(name, message, to=['prashantnotani@gmail.com'])
         email.send()
         cursor.execute(query)
         conn.commit()
@@ -367,6 +368,3 @@ def download(request):
         cursor.close()
         conn.close()
 
-def fileupload(request):
-    print("uploadform")
-    return render(request,'uploadform.html')
