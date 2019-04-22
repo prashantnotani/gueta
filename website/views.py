@@ -319,7 +319,7 @@ def importfile(request):
     if(request.session.get('lname')):
         return render(request,"importfile.html")
     else:
-        return render(request,"login.html")
+        return redirect('login')
 
 def contact(request):
     try:

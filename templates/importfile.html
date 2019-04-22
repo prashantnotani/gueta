@@ -4,7 +4,26 @@
 <html lang="zxx" xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <title>Upload</title>
+    <title>Import</title>
+     <style type="text/css">
+    .validation,.success {
+        border: 1px solid;
+        margin: 10px 0px;
+        padding: 15px 10px 15px 50px;
+        background-repeat: no-repeat;
+        background-position: 10px center;
+    }
+    .validation{
+        color: #D63301;
+        background-color: #FFCCBA;
+        background-image: url('https://i.imgur.com/GnyDvKN.png');
+    }
+    .success {
+        color: #4F8A10;
+        background-color: #DFF2BF;
+        background-image: url('https://i.imgur.com/Q9BGTuy.png');
+    }
+    </style>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"/>
@@ -219,19 +238,26 @@
 
         </h3>
         <!-- content -->
+        
         <div class="sub-main-w3 pt-md-4">
-            <form name="myform" method="post" action="/website/contact"  enctype="multipart/form-data">
+            <form name="myform" method="post" action="/website/contact"  enctype="multipart/form-data" onsubmit="return validate();">
+                <div class="isa_error">
+                    <span id="fileTypeError"></span>
+                    <span id="fileNameError" ></span>
+                </div>
+                <br>
+                <br>
 
                {% csrf_token %}
                 <div class="form-style-agile form-group">
-                    <input type="file" name="myfile" class="form-control">
+                    <input type="file" name="myfile" class="form-control" id="fileType">
                 </div>    
                 <div class="form-style-agile form-group">
                     <label style="color:#000000">
                         Name
                         
                     </label>
-                    <input placeholder="Enter your File Name" class="form-control" name="name" id="firstName" type="text">      
+                    <input placeholder="Enter your File Name" class="form-control" name="name" id="fileName" type="text">      
                 </div>
                 <button type="submit">Import</button>
             </form>
@@ -312,7 +338,31 @@
 </footer>
 <!-- //footer -->
 
+<script type="text/javascript">
 
+function validate()
+{  
+    $("#fileTypeError").html("")
+    $("#fileTypeError").removeClass("validation")
+    $("#fileNameError").html("")
+    $("#fileNameError").removeClass("validation")
+    alert("hello")
+    console.log($("#fileType").val())
+    if($("#fileType").val()==null||$("#fileType").val()=="")
+    {
+        $("#fileTypeError").html("Please Upload File")
+        $("#fileTypeError").addClass("validation")
+        return false;
+    } 
+    if($("#fileName").val()==null||$("#fileName").val()=="")
+    {
+        $("#fileNameError").html("Please Enter File Name")
+        $("#fileNameError").addClass("validation")
+        return false;
+    }   
+    
+}
+</script>    
 
 </body>
 
