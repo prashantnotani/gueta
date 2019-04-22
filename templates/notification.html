@@ -273,14 +273,19 @@
         <div class="sub-main-w3 pt-md-4">
 
             <form name="myform" action="/website/disnot" onsubmit="return validate();" >
-                <div >
-                    <span id="titleError"  ></span>
-                    <span id="messageError" ></span>
-                </div>
+                
                 <div class="isa_error">
                     
-                    <span id="titleError"></span>.
+                    <span id="titleError"></span>
+                    <span id="messageError" ></span>
                 </div>
+                {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
                 <div class="form-style-agile form-group">
                     <label style="color:#000000">
                          Name
@@ -451,7 +456,11 @@
 <script type="text/javascript">
 
 function validate()
-{
+{   
+     $("#titleError").html("")
+     $("#titleError").removeClass("validation")
+     $("#messageError").html("")
+     $("#messageError").removeClass("validation")
     
     if($("#notificationTitle").val()==null || $("#notificationTitle").val()=="")
     {

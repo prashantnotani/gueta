@@ -8,6 +8,7 @@ from django.conf import settings
 import openpyxl
 from openpyxl import load_workbook
 from django.shortcuts import redirect
+from django.contrib import messages
 # Create your views here.
 def index(requests):
     return render(requests,"index.html")
@@ -231,7 +232,7 @@ def disnot(request):
         email.send()
         cursor.execute(query)
         conn.commit()
-        rec="done"
+        messages.success(request, 'Notification Sent')
         return redirect('notification')
 
      except Error as e:

@@ -137,6 +137,6 @@ TEMPLATE_DIRS = (
 )
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'raorajkiran@gmail.com'
-EMAIL_HOST_PASSWORD = 'Bear974337'
+EMAIL_HOST_USER = 'axyz7674@gmail.com'
+EMAIL_HOST_PASSWORD = 'Sherlocked22'
 EMAIL_PORT = 587
