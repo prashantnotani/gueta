@@ -11,6 +11,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 import random
 import string
+import hashlib
 # Create your views here.
 def index(requests):
     return render(requests,"index.html")
@@ -69,10 +70,11 @@ def savedata(request):
         ccity = int(request.GET.get("ccity"))
         carea = int(request.GET.get("carea"))
         cname = request.GET.get("collegeName")
+        encPassword=hash_string(password)
         conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
         cursor = conn.cursor(buffered=True)
 
-        query3 = "insert into profreg(firstName,middleName,lastName,email,password,mobile,designation,cname) VALUES ('%s','%s','%s','%s','%s','%d','%s','%s')"%(firstName,middleName,lastName,email,password,mobile,designation,cname)
+        query3 = "insert into profreg(firstName,middleName,lastName,email,password,mobile,designation,cname) VALUES ('%s','%s','%s','%s','%s','%d','%s','%s')"%(firstName,middleName,lastName,email,encPassword,mobile,designation,cname)
         cursor.execute(query3)
         query4 = "select prid from profreg WHERE mobile=('%d')"%(mobile)
         cursor.execute(query4)
@@ -97,13 +99,14 @@ def logindata(request):
         password=request.GET.get("password")
         designation = request.GET.get("designation")
         gmail = request.GET.get('e')
+        encPassword=hash_string(password)
         print(gmail,password,designation)
         conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
         cursor = conn.cursor()
         if(gmail):
             query="select firstName from profreg where email = '%s'"%(gmail)
         else:
-            query = "select firstName from profreg where email = '%s' AND password = '%s' AND designation='%s'"%(email,password,designation)
+            query = "select firstName from profreg where email = '%s' AND password = '%s' AND designation='%s'"%(email,encPassword,designation)
         cursor.execute(query)
 
         #cursor.execute(query)
@@ -344,9 +347,7 @@ def contact(request):
                     #  get particular cell value
                     cell_obj=sheet.cell(row=i,column=j)
                     row_data.append(cell_obj.value)
-                    password=randomString()
-                    print(password)
-                print(row_data[2])
+                password=hash_string(str(row_data[3]))
                 query = "insert into profreg(firstName,email,mobile,password) VALUES ('%s','%s','%d','%s')"%(row_data[0],row_data[1],row_data[2],password)
                 cursor.execute(query)
                 row_data.clear()
@@ -377,7 +378,10 @@ def download(request):
         cursor.close()
         conn.close()
 
-def randomString(stringLength=10):
-    """Generate a random string of fixed length """
-    letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for i in range(stringLength))
+
+
+def hash_string(string):
+    """
+    Return a SHA-256 hash of the given string
+    """
+    return hashlib.sha256(string.encode('utf-8')).hexdigest()
