@@ -247,7 +247,13 @@
                 </div>
                 <br>
                 <br>
-
+                 {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
                {% csrf_token %}
                 <div class="form-style-agile form-group">
                     <input type="file" name="myfile" class="form-control" id="fileType">
@@ -346,7 +352,7 @@ function validate()
     $("#fileTypeError").removeClass("validation")
     $("#fileNameError").html("")
     $("#fileNameError").removeClass("validation")
-    alert("hello")
+   
     console.log($("#fileType").val())
     if($("#fileType").val()==null||$("#fileType").val()=="")
     {

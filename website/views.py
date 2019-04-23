@@ -9,6 +9,8 @@ import openpyxl
 from openpyxl import load_workbook
 from django.shortcuts import redirect
 from django.contrib import messages
+import random
+import string
 # Create your views here.
 def index(requests):
     return render(requests,"index.html")
@@ -70,7 +72,7 @@ def savedata(request):
         conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
         cursor = conn.cursor(buffered=True)
 
-        query3 = "insert into profreg(firstName,middleName,lastName,email,password,mobile,designation,cname) VALUES ('%s','%s','%s','%s','%s','%s','%d','%s','%s')"%(firstName,middleName,lastName,email,password,cpassword,mobile,designation,cname)
+        query3 = "insert into profreg(firstName,middleName,lastName,email,password,mobile,designation,cname) VALUES ('%s','%s','%s','%s','%s','%d','%s','%s')"%(firstName,middleName,lastName,email,password,mobile,designation,cname)
         cursor.execute(query3)
         query4 = "select prid from profreg WHERE mobile=('%d')"%(mobile)
         cursor.execute(query4)
@@ -323,6 +325,7 @@ def importfile(request):
 
 def contact(request):
     try:
+
         conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
         cursor = conn.cursor(buffered=True)
         if request.method == 'POST' and request.FILES['myfile']:
@@ -341,13 +344,16 @@ def contact(request):
                     #  get particular cell value
                     cell_obj=sheet.cell(row=i,column=j)
                     row_data.append(cell_obj.value)
-                print(row_data[0])
-                query = "insert into profreg(firstName,email) VALUES ('%s','%s')"%(row_data[0],row_data[1])
+                    password=randomString()
+                    print(password)
+                print(row_data[2])
+                query = "insert into profreg(firstName,email,mobile,password) VALUES ('%s','%s','%d','%s')"%(row_data[0],row_data[1],row_data[2],password)
                 cursor.execute(query)
                 row_data.clear()
                 print('\n')
         conn.commit()
-        return HttpResponse(index(request))
+        messages.success(request, 'Imported Successfully')
+        return redirect('importfile')
     except Error as e:
         print(e)
     finally:
@@ -371,3 +377,7 @@ def download(request):
         cursor.close()
         conn.close()
 
+def randomString(stringLength=10):
+    """Generate a random string of fixed length """
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
