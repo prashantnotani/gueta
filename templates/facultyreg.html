@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="zxx" xmlns="http://www.w3.org/1999/html">
@@ -22,8 +21,125 @@
             window.scrollTo(0, 1);
         }
 
-    }
+
     </script>
+    <script>
+        function validate() {
+            var fname = document.getElementById("firstName").value;
+            if (fname === "") {
+                document.getElementById("div1").innerHTML = "Enter a value";
+                document.getElementById("div1").style.color = "Red";
+            } else if (!fname.match(/^[a-z A-Z]+$/)) {
+                document.getElementById("div1").innerHTML = "Enter only alphabatic value";
+                document.getElementById("div1").style.color = "Red";
+            } else {
+                document.getElementById("div1").innerHTML = "Ok input";
+                document.getElementById("div1").style.color = "green";
+            }
+
+            var mname = document.getElementById("middleName").value;
+            if (mname === "") {
+                document.getElementById("div2").innerHTML = "Enter a value";
+                document.getElementById("div2").style.color = "Red";
+            } else if (!mname.match(/^[a-z A-Z]+$/)) {
+                document.getElementById("div2").innerHTML = "Enter only alphabatic value";
+                document.getElementById("div2").style.color = "Red";
+            } else {
+                document.getElementById("div2").innerHTML = "Ok input";
+                document.getElementById("div2").style.color = "green";
+            }
+
+            var lname = document.getElementById("lastName").value;
+            if (lname === "") {
+                document.getElementById("div3").innerHTML = "Enter a value";
+                document.getElementById("div3").style.color = "Red";
+            } else if (!lname.match(/^[a-z A-Z]+$/)) {
+                document.getElementById("div3").innerHTML = "Enter only alphabatic value";
+                document.getElementById("div3").style.color = "Red";
+            } else {
+                document.getElementById("div3").innerHTML = "Ok input";
+                document.getElementById("div3").style.color = "green";
+            }
+
+            var cname = document.getElementById("cname").value;
+            if (cname === "") {
+                document.getElementById("div4").innerHTML = "Enter a value";
+                document.getElementById("div4").style.color = "Red";
+            } else if (!cname.match(/^[a-z A-Z]+$/)) {
+                document.getElementById("div4").innerHTML = "Enter only alphabatic value";
+                document.getElementById("div4").style.color = "Red";
+            } else {
+                document.getElementById("div4").innerHTML = "Ok input";
+                document.getElementById("div4").style.color = "green";
+            }
+
+            var Email = document.getElementById("email").value;
+            if (Email.match(/^[a-z0-9]+@(gmail.com|yahoo.com|yahoo.in|gtu.edu.in)$/)) {
+                document.getElementById("div6").innerHTML = "Ok input";
+                document.getElementById("div6").style.color = "green";
+            } else {
+                document.getElementById("div6").innerHTML = "Enter the correct email address";
+                document.getElementById("div6").style.color = "Red";
+            }
+
+            var phone = document.getElementById("mob").value;
+
+            if (phone.match(/^^[6-9]\d{9}$/) && phone.length === 10) {
+                document.getElementById("div5").innerHTML = "Ok input";
+                document.getElementById("div5").style.color = "green";
+            } else {
+                document.getElementById("div5").innerHTML = "phone number degit must be 10 length";
+                document.getElementById("div5").style.color = "Red";
+            }
+
+            var password = document.getElementById("password").value;
+
+            var illegalChars = /[\W_]/;
+
+            if (password === "") {
+                document.getElementById("div7").innerHTML = "You didn't enter a password.";
+                document.getElementById("div7").style.color = "Red";
+            } else if (illegalChars.test(password)) {
+                document.getElementById("div7").innerHTML = "The password contains illegal characters.";
+                document.getElementById("div7").style.color = "Red";
+            } else if ((password.search(/[a-zA-Z]+/) === -1) || (password.search(/[0-9]+/) === -1)) {
+                document.getElementById("div7").innerHTML = "The password must contain at least one numeral.";
+                document.getElementById("div7").style.color = "Red";
+            } else if ((password.length < 6) || (password.length > 15)) {
+                document.getElementById("div7").innerHTML = "The password must be between 6 to 15 characters. ";
+                document.getElementById("div7").style.color = "Red";
+            } else {
+                document.getElementById("div7").innerHTML = "Ok input";
+                document.getElementById("div7").style.color = "green";
+            }
+
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementsByName("date")[0].setAttribute('max', today)
+        }
+    </script>
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+        #contact #form input.captcha {
+            background: #222222 url(http://img3.uploadhouse.com/fileuploads/17737/17737011310213e71805ecf2292144cbbecf42ad.png) no-repeat 10px 9px;
+        }
+
+        #contact #captcha span {
+            width: 44px;
+        }
+
+        #contact #captcha input {
+            background: url(http://img3.uploadhouse.com/fileuploads/17737/17737011310213e71805ecf2292144cbbecf42ad.png) no-repeat scroll 0 0 transparent;
+            margin: 5px 0 0;
+            padding: 0;
+            border: medium none;
+            cursor: pointer;
+            width: 15px;
+        }
+    </style>
+
     <!--// Meta tag Keywords -->
 
     <!-- Custom-Files -->
@@ -33,6 +149,89 @@
     <link rel="stylesheet" href={% static "css/style.css" %} type="text/css" media="all"/>
     <!-- Font-Awesome-Icons-Css -->
     <link rel="stylesheet" href={% static "css/fontawesome-all.css" %}>
+
+    <link rel="stylesheet" href={% static "css/captcha.css" %}>
+
+    <script>
+        function captchaCode() {
+            var Numb1, Numb2, Numb3, Numb4, Code;
+            Numb1 = (Math.ceil(Math.random() * 10) - 1).toString();
+            Numb2 = (Math.ceil(Math.random() * 10) - 1).toString();
+            Numb3 = (Math.ceil(Math.random() * 10) - 1).toString();
+            Numb4 = (Math.ceil(Math.random() * 10) - 1).toString();
+
+            Code = Numb1 + Numb2 + Numb3 + Numb4;
+            $("#captcha span").remove();
+            $("#captcha input").remove();
+            $("#captcha").append("<span id='code'>" + Code + "</span><input type='button' onclick='captchaCode();'>");
+        }
+
+        $(function () {
+            captchaCode();
+
+            $('#contactForm').submit(function () {
+                var captchaVal = $("#code").text();
+                var captchaCode = $(".captcha").val();
+                if (captchaVal == captchaCode) {
+                    $(".captcha").css({
+                        "color": "#609D29"
+                    });
+                }
+                else {
+                    $(".captcha").css({
+                        "color": "#CE3B46"
+                    });
+                }
+
+                var emailFilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,10})+$/;
+                var emailText = $(".email").val();
+                if (emailFilter.test(emailText)) {
+                    $(".email").css({
+                        "color": "#609D29"
+                    });
+                }
+                else {
+                    $(".email").css({
+                        "color": "#CE3B46"
+                    });
+                }
+
+                var nameFilter = /^([a-zA-Z \t]{3,15})+$/;
+                var nameText = $(".name").val();
+                if (nameFilter.test(nameText)) {
+                    $(".name").css({
+                        "color": "#609D29"
+                    });
+                }
+                else {
+                    $(".name").css({
+                        "color": "#CE3B46"
+                    });
+                }
+
+                var messageText = $(".message").val().length;
+                if (messageText > 50) {
+                    $(".message").css({
+                        "color": "#609D29"
+                    });
+                }
+                else {
+                    $(".message").css({
+                        "color": "#CE3B46"
+                    });
+                }
+
+                if ((captchaVal !== captchaCode) || (!emailFilter.test(emailText)) || (!nameFilter.test(nameText)) || (messageText < 50)) {
+                    return false;
+                }
+                if ((captchaVal == captchaCode) && (emailFilter.test(emailText)) && (nameFilter.test(nameText)) && (messageText > 50)) {
+                    $("#contactForm").css("display", "none");
+                    $("#form").append("<h2>Message sent!</h2>");
+                    return false;
+                }
+            });
+        });
+    </script>
     <!-- //Custom-Files -->
 
     <!-- Web-Fonts -->
@@ -43,20 +242,20 @@
 
     <script>
 
-        function getarea(){
+        function getarea() {
             var cid = document.getElementById('cityid').value;
 
-            var url = "/website/getarea?cid=" +cid;
+            var url = "/website/getarea?cid=" + cid;
 
             var req = new XMLHttpRequest();
 
             req.onreadystatechange = showarea;
 
-            function showarea(){
+            function showarea() {
 
-                if(req.readyState == 4){
-                    
-                   document.getElementById('areaid').innerHTML = req.responseText;
+                if (req.readyState == 4) {
+
+                    document.getElementById('areaid').innerHTML = req.responseText;
                 }
             }
 
@@ -64,20 +263,20 @@
             req.send();
 
         }
-         function getcarea(){
+        function getcarea() {
             var cid = document.getElementById('ccityid').value;
 
-            var url = "/website/getarea?cid=" +cid;
+            var url = "/website/getarea?cid=" + cid;
 
             var req = new XMLHttpRequest();
 
             req.onreadystatechange = showarea;
 
-            function showarea(){
+            function showarea() {
 
-                if(req.readyState == 4){
-                    
-                   document.getElementById('careaid').innerHTML = req.responseText;
+                if (req.readyState == 4) {
+
+                    document.getElementById('careaid').innerHTML = req.responseText;
                 }
             }
 
@@ -93,11 +292,9 @@
 
 <body>
 
-<!-- header -->
-
-    <header>
-        <!-- top header -->
-        {% comment %}<div class="top-head-w3ls py-2 bg-dark">
+<header>
+    <!-- top header -->
+    {% comment %}<div class="top-head-w3ls py-2 bg-dark">
             <div class="container">
                 <div class="row">
                     <h1 class="text-capitalize text-white col-7">
@@ -123,47 +320,47 @@
                 </div>
             </div>
         </div>{% endcomment %}
-        <!-- //top header -->
-        <!-- middle header -->
-        <div class="middle-w3ls-nav py-2">
-            <div class="container">
-               <div class="row">
-                    <a class="logo font-italic font-weight-bold col-lg-4 text-lg-left text-center" href="index.html">Gueta</a>
-                    <div class="col-lg-8 right-info-agiles mt-lg-0 mt-sm-3 mt-1">
-                        <div class="row">
-                            <div class="col-sm-4 nav-middle">
+    <!-- //top header -->
+    <!-- middle header -->
+    <div class="middle-w3ls-nav py-2">
+        <div class="container">
+            <div class="row">
 
-                                <div class="agile-addresmk">
-                                    <p>
+                <a class="logo font-italic font-weight-bold col-lg-4 text-lg-left text-center"
+                   href="index.html">Gueta</a>
 
-                                    </p>
-                                </div>
+                <div class="col-lg-8 right-info-agiles mt-lg-0 mt-sm-3 mt-1">
+                    <div class="row">
+                        <div class="col-sm-4 nav-middle">
+
+                            <div class="agile-addresmk">
+                                <p>
+
+                                </p>
                             </div>
-                            <div class="col-sm-4 col-6 nav-middle mt-sm-0 mt-2">
+                        </div>
+                        <div class="col-sm-4 col-6 nav-middle mt-sm-0 mt-2">
 
-                                <div class="agile-addresmk">
+                            <div class="agile-addresmk">
 
-                                </div>
                             </div>
-                            {%   if request.session.lname %}
+                        </div>
+                        {% if request.session.lname %}
                             <div class="col-sm-4 col-6 top-login-butt text-right mt-sm-2">
                                 <h6>HI,{{ request.session.lname }}</h6>
-                                <h6><a href="/website/signout">Sign out</a></h6>
+                                <h6><a href="/website/signout" onclick="signOut();">Sign out</a></h6>
                             </div>
-                            {% endif %}
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-        <!-- //middle header -->
-    </header>
-    <!-- //header -->
-
-    <!-- banner -->
-    <div class="banner-agile-2">
-        <!-- navigation -->
-           <div class="navigation-w3ls">
+    </div>
+    <!-- //middle header -->
+</header>
+<div class="banner-agile-2">
+    <!-- navigation -->
+    <div class="navigation-w3ls">
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-nav">
             <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -204,7 +401,6 @@
                             </a>
 
                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="question_bank.html">Question Bank</a>
                                 <a class="dropdown-item" href="/website/fileupload">Upload Files</a>
                                 <a class="dropdown-item" href="/website/download">Download</a>
 
@@ -215,22 +411,23 @@
                         <a class="nav-link text-white" href="importfile.html">Import</a>
                     </li>
 
-                        {%   if  not request.session.lname%}
-                            <li class="nav-item active">
-                                <a class="nav-link text-white" href="facreg.html">Registration</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="login.html">Login</a>
-                            </li>
-                        {% endif %}
+
+                    {% if  not request.session.lname %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="facreg.html">Registration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="login.html">Login</a>
+                        </li>
+                    {% endif %}
 
                 </ul>
             </div>
         </nav>
     </div>
-      
-        <!-- //navigation -->
-    </div> 
+
+    <!-- //navigation -->
+</div>
 <!-- breadcrumb -->
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -241,7 +438,6 @@
     </ol>
 </nav>
 
-
 <!-- login -->
 <div class="login-w3ls py-5">
     <div class="container py-xl-5 py-lg-3">
@@ -250,142 +446,136 @@
         </h3>
         <!-- content -->
         <div class="sub-main-w3 pt-md-4">
-            <form name="myform" action="/website/savedata" onsubmit="return FormValidation();" >
+            <form name="fname" action="/website/savedata" id="contactForm"
+                  method="get">
                 <div class="form-style-agile form-group">
                     <label style="color:#000000">
                         First Name
                         <i class="fas fa-user"></i>
                     </label>
-                    <input placeholder="Enter your First Name" class="form-control" name="firstName" id="firstName" type="text">
+                    <input placeholder="Enter your First Name" class="form-control" name="firstName" id="firstName" onkeyup="validate()"
+                           type="text"> <span id="div1"></span>
                     <span id="message" style="color: red"></span>
                 </div>
-
-                 <div class="form-style-agile form-group">
+                <div class="form-style-agile form-group">
                     <label style="color:#000000">
                         Middle Name
                         <i class="fas fa-user"></i>
                     </label>
-                    <input placeholder="Enter your Middle Name" class="form-control" name="middleName" id="middleName" type="text">
+                    <input placeholder="Enter your Middle Name" class="form-control" name="middleName" id="middleName" onkeyup="validate()"
+                           type="text"> <span id="div2"></span>
                     <span id="message1" style="color:red"></span>
                 </div>
-
-                 <div class="form-style-agile form-group">
+                <div class="form-style-agile form-group">
                     <label style="color:#000000">
                         Last Name
                         <i class="fas fa-user"></i>
                     </label>
-                    <input placeholder="Enter your Last Name" class="form-control" name="lastName" id="lastName" type="text">
+                    <input placeholder="Enter your Last Name" class="form-control" name="lastName" id="lastName" onkeyup="validate()"
+                           type="text"><span id="div3"></span>
                     <span id="message2" style="color:red"></span>
                 </div>
-
-
-                 <div class="form-style-agile form-group">
+                <div class="form-style-agile form-group">
                     <label style="color:#000000">
                         Residential Address
                     </label>
-                    <textarea name="raddress" placeholder="Enter your Residental Address" class="form-control" id="raddress" ></textarea>
+                    <textarea name="raddress" placeholder="Enter your Residental Address" class="form-control" required=""
+                              id="raddress"></textarea>
                     <span id="message3" style="color:red"></span>
                 </div>
-
-                 <div class="form-style-agile form-group">
-
+                <div class="form-style-agile form-group">
                     <label style="color:#000000">
-                       City
+                        City
                     </label>
-                     <select name="city" class="form-control" id="cityid" onchange="getarea()">
-                         <option value="0">--select--</option>
-                         {% for i in city %}
-                         <option value="{{ i.0 }}">{{ i.1 }}</option>
-                         {% endfor %}
-                         <span id="message4" style="color: red"></span>
-                     </select>
+                    <select name="city" class="form-control" id="cityid" onchange="getarea()" required="">
+                        <option value="0">--select--</option>
+                        {% for i in city %}
+                            <option value="{{ i.0 }}">{{ i.1 }}</option>
+                        {% endfor %}
+                        <span id="message4" style="color: red"></span>
+                    </select>
                 </div>
-
                 <div class="form-style-agile form-group">
 
                     <label style="color:#000000">
-                       Area
+                        Area
                     </label>
-                     <select name="area" id="areaid" class="form-control" >
-                         <option>--select--</option>
-                         {% for j in area %}
-                         <option value="{{ j.0 }}">{{ j.1 }}</option>
-                         {% endfor %}
-                     </select>
+                    <select name="area" id="areaid" class="form-control" required="">
+                        <option>--select--</option>
+                        {% for j in area %}
+                            <option value="{{ j.0 }}">{{ j.1 }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-
-                 <div class="form-style-agile form-group">
+                <div class="form-style-agile form-group">
 
                     <label style="color:#000000">
-                       Name of College/Institution
+                        Name of College/Institution
                     </label>
-                     <input placeholder="Enter your college Name" class="form-control" name="collegeName" type="text">
+                    <input placeholder="Enter your college Name" class="form-control" name="collegeName" type="text" id="cname" onkeyup="validate()">
+                    <span id="div4"></span>
                 </div>
-
                 <div class="form-style-agile form-group">
                     <label>
                         College/Institution Address
 
                     </label>
-                     <textarea name="caddress"  placeholder="Enter your Institution Address" class="form-control"></textarea>
+                    <textarea name="caddress" placeholder="Enter your Institution Address"
+                              class="form-control" required=""></textarea>
                 </div>
-
-                 <div class="form-style-agile form-group">
+                <div class="form-style-agile form-group">
 
                     <label style="color:#000000">
-                      College City
+                        College City
                     </label>
-                     <select name="ccity" class="form-control" id="ccityid" onchange="getcarea()" >
-                         <option value="">--select--</option>
-                         {% for i in city %}
-                         <option value="{{ i.0 }}"> {{ i.1 }} </option>
-                         {% endfor %}
+                    <select name="ccity" class="form-control" id="ccityid" onchange="getcarea()" required="">
+                        <option value="">--select--</option>
+                        {% for i in city %}
+                            <option value="{{ i.0 }}"> {{ i.1 }} </option>
+                        {% endfor %}
 
-                     </select>
+                    </select>
                 </div>
-
-                 <div class="form-style-agile form-group">
+                <div class="form-style-agile form-group">
 
                     <label style="color:#000000">
-                       College Area
+                        College Area
                     </label>
-                     <select name="carea" id="careaid" class="form-control" >
-                         <option value="">--select--</option>
-                         {% for j in area %}
-                         <option value="{{ j.0 }}"> {{ j.1 }}</option>
-                         {% endfor %}
-                     </select>
+                    <select name="carea" id="careaid" class="form-control" required="">
+                        <option value="">--select--</option>
+                        {% for j in area %}
+                            <option value="{{ j.0 }}"> {{ j.1 }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-
-                 <div class="form-style-agile form-group">
+                <div class="form-style-agile form-group">
                     <label style="color:#000000">
                         Mobile Number
                     </label>
-                    <input placeholder="Enter Mobile Number" class="form-control" name="mobile" type="text" >
+                    <input placeholder="Enter Mobile Number" class="form-control" name="mobile" type="text" id="mob" onkeyup="validate()">
+                    <span id="div5"></span>
                 </div>
                 <div class="form-style-agile form-group">
                     <label style="color:#000000">
                         Email
                     </label>
-                    <input placeholder="Email id" class="form-control" name="email" type="email" >
+                    <input placeholder="Email id" class="form-control" name="email" type="email" id="email" onkeyup="validate()">
+                    <span id="div6"></span>
                 </div>
                 <div class="form-style-agile form-group">
                     <label style="color:#000000">
                         Password
                         <i class="fas fa-unlock-alt"></i>
                     </label>
-                    <input placeholder="Password" class="form-control" name="password" type="password" id="password" >
+                    <input placeholder="Password" class="form-control" name="password" type="password" id="password" onkeyup="validate()"><span id="div7"></span>
                 </div>
-
-
-
                 <div class="form-style-agile form-group">
 
                     <label style="color:#000000">
                         Designation
                     </label>
 
-                    <select name="designation" class="form-control">
+                    <select name="designation" class="form-control" required="">
                         <option value="Associate Professor">Associate Professor</option>
                         <option value="Assistant Professor">Assistant Professor</option>
                         <option value="Student">Principal</option>
@@ -394,162 +584,150 @@
 
                     </select>
                 </div>
-
-
-
-
+                
                 <!-- //switch -->
-                <input type="submit"  value="Register">
-
-
-
+                <input type="submit" value="Register">
             </form>
         </div>
         <!-- //content -->
     </div>
 </div>
 <!-- //login -->
-
-<!-- brands -->
-
-<!-- //brands -->
-
 <!-- footer -->
 <footer>
-    <div class="container py-4">
-        <div class="row py-xl-5 py-sm-3">
-            <div class="col-lg-6 map">
-                <h2 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">
+		<div class="container py-4">
+			<div class="row py-xl-5 py-sm-3">
+				<div class="col-lg-6 map">
+					<h2 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">our
+						<span class="font-weight-bold">directions</span>
+					</h2>
 
-                </h2>
-
-
-            </div>
-            <div class="col-lg-6 contact-agileits-w3layouts mt-lg-0 mt-4">
-
-
-                <div class="subscribe-w3ls my-xl-5 my-4">
-                    <h6 class="text-white text-capitalize mb-4">subscribe our newsletter</h6>
-
-                    <form action="#" method="post" class="subscribe_form">
-                        <input class="form-control" type="email" name="email" placeholder="Enter your email..."
-                               required="">
-                        <button type="submit" class="btn btn-primary submit">Submit</button>
-                    </form>
-                </div>
-                <p class="para-agileits-w3layouts text-white">
-                    <i class="fas fa-map-marker pr-3"></i>1, Ashram Rd, Near Gujarat Vidyapeeth, Sattar Taluka Society,
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d58748.29853872592!2d72.51903479414618!3d23.032264896595485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x395e844f97ed4d91%3A0x3c8af58f0d8c39b4!2scu+shah+arts+college+lal+darwaja!3m2!1d23.0276714!2d72.58187509999999!5e0!3m2!1sen!2sin!4v1552411109431" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <div class="conta-posi-w3ls p-4 rounded">
+						<h5 class="text-white font-weight-bold mb-3">Address</h5>
+						<p>1, Ashram Rd, Near Gujarat Vidyapeeth, Sattar Taluka Society,
+                    Incometax Circle, Ahmedabad, Gujarat 380014</p>
+					</div>
+				</div>
+				<div class="col-lg-6 contact-agileits-w3layouts mt-lg-0 mt-4">
+					<h4 class="contact-title text-capitalize text-white font-weight-light mb-sm-4 mb-3">get in
+						<span class="font-weight-bold">touch</span>
+					</h4>
+					<p class="conta-para-style border-left pl-4"></p>
+					<div class="subscribe-w3ls my-xl-5 my-4">
+						<h6 class="text-white text-capitalize mb-4">subscribe our newsletter</h6>
+						<form action="#" method="post" class="subscribe_form">
+							<input class="form-control" type="email" name="email" placeholder="Enter your email..." required="">
+							<button type="submit" class="btn btn-primary submit">Submit</button>
+						</form>
+					</div>
+					<p class="para-agileits-w3layouts text-white">
+						<i class="fas fa-map-marker pr-3"></i>1, Ashram Rd, Near Gujarat Vidyapeeth, Sattar Taluka Society,
                     Incometax Circle, Ahmedabad, Gujarat 380014</p>
 
-                <p class="para-agileits-w3layouts text-white my-sm-3 my-2">
-                    <i class="fas fa-phone pr-3"></i>032 625 4592</p>
+					<p class="para-agileits-w3layouts text-white my-sm-3 my-2">
+						<i class="fas fa-phone pr-3"></i>079-25506703</p>
+					<p class="para-agileits-w3layouts">
+						<i class="far fa-envelope-open pr-2"></i>
+						<a href="mailto:mail@example.com" class=" text-white">guetaonline@gmail.com</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="copyright-agiles py-3">
+			<div class="container">
+				<div class="row">
+					<p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">GUETA
 
-                <p class="para-agileits-w3layouts">
-                    <i class="far fa-envelope-open pr-2"></i>
-                    <a href="mailto:mail@example.com" class=" text-white">info@example.com</a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="copyright-agiles py-3">
-        <div class="container">
-            <div class="row">
-                <p class="col-lg-8 copy-right-grids text-white text-lg-left text-center mt-lg-1">© 2018 GUETA. All
-                    Rights Reserved
-                </p>
-                <!-- social icons -->
-                <div class="social-icons text-lg-right text-center col-lg-4 mt-lg-0 mt-3">
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#" class="fab fa-facebook-f icon-border facebook rounded-circle"> </a>
-                        </li>
-                        <li class="mx-2">
-                            <a href="#" class="fab fa-twitter icon-border twitter rounded-circle"> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="fab fa-google-plus-g icon-border googleplus rounded-circle"> </a>
-                        </li>
-                        <li class="ml-2">
-                            <a href="#" class="fas fa-rss icon-border rss rounded-circle"> </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- //social icons -->
-            </div>
-        </div>
-    </div>
-</footer>
+					</p>
+					<!-- social icons -->
+					<div class="social-icons text-lg-right text-center col-lg-4 mt-lg-0 mt-3">
+						<ul class="list-unstyled">
+							<li>
+								<a href="#" class="fab fa-facebook-f icon-border facebook rounded-circle"> </a>
+							</li>
+							<li class="mx-2">
+								<a href="#" class="fab fa-twitter icon-border twitter rounded-circle"> </a>
+							</li>
+							<li>
+								<a href="#" class="fab fa-google-plus-g icon-border googleplus rounded-circle"> </a>
+							</li>
+							<li class="ml-2">
+								<a href="#" class="fas fa-rss icon-border rss rounded-circle"> </a>
+							</li>
+						</ul>
+					</div>
+					<!-- //social icons -->
+				</div>
+			</div>
+		</div>
+	</footer>
 <!-- //footer -->
-
 
 
 </body>
 <script>
 
-   function FormValidation(){
-    //First Name Validation
-    var fn = document.getElementById('firstName').value;
-    var mn = document.getElementById('middleName').value;
-    var ln = document.getElementById('lastName').value;
-    var radd = document.getElementById('raddress').value;
-    var cid = document.getElementById('cityid').value;
-    var optioncidIndex = cid.options[cid.selectedIndex].value;
-       print('#######',cid)
-     if(fn == ""){
+    function FormValidation() {
+        //First Name Validation
+        var fn = document.getElementById('firstName').value;
+        var mn = document.getElementById('middleName').value;
+        var ln = document.getElementById('lastName').value;
+        var radd = document.getElementById('raddress').value;
+        var cid = document.getElementById('cityid').value;
+        var optioncidIndex = cid.options[cid.selectedIndex].value;
+        print('#######', cid)
+        if (fn == "") {
 
-        document.getElementById('firstName').style.borderColor = "red";
-        document.getElementById('message').innerHTML = "Please Enter First Name";
-        return false;
-     }
-     else{
-        document.getElementById('firstName').style.borderColor = "";
-        document.getElementById('message').innerHTML = "";
-     }
-     if(mn == ""){
+            document.getElementById('firstName').style.borderColor = "red";
+            document.getElementById('message').innerHTML = "Please Enter First Name";
+            return false;
+        }
+        else {
+            document.getElementById('firstName').style.borderColor = "";
+            document.getElementById('message').innerHTML = "";
+        }
+        if (mn == "") {
 
-        document.getElementById('middleName').style.borderColor = "red";
-        document.getElementById('message1').innerHTML = "Please Enter Middle Name";
-        return false;
-     }
-    else
-     {
-         document.getElementById('middleName').style.borderColor = "";
-         document.getElementById('message1').innerHTML = "";
-     }
-     if(ln == ""){
+            document.getElementById('middleName').style.borderColor = "red";
+            document.getElementById('message1').innerHTML = "Please Enter Middle Name";
+            return false;
+        }
+        else {
+            document.getElementById('middleName').style.borderColor = "";
+            document.getElementById('message1').innerHTML = "";
+        }
+        if (ln == "") {
 
-        document.getElementById('lastName').style.borderColor = "red";
-        document.getElementById('message2').innerHTML = "Please Enter Last Name";
-        return false;
-     }
-     else
-     {
-         document.getElementById('lastName').style.borderColor = "";
-         document.getElementById('message2').innerHTML = "";
-     }
-     if(radd == ""){
+            document.getElementById('lastName').style.borderColor = "red";
+            document.getElementById('message2').innerHTML = "Please Enter Last Name";
+            return false;
+        }
+        else {
+            document.getElementById('lastName').style.borderColor = "";
+            document.getElementById('message2').innerHTML = "";
+        }
+        if (radd == "") {
 
-        document.getElementById('raddress').style.borderColor = "red";
-        document.getElementById('message3').innerHTML = "Please Enter Residential Address";
-        return false;
-     }
-     else
-     {
-         document.getElementById('raddress').style.borderColor = "";
-         document.getElementById('message3').innerHTML = "";
-     }
-     if(cid == 0){
+            document.getElementById('raddress').style.borderColor = "red";
+            document.getElementById('message3').innerHTML = "Please Enter Residential Address";
+            return false;
+        }
+        else {
+            document.getElementById('raddress').style.borderColor = "";
+            document.getElementById('message3').innerHTML = "";
+        }
+        if (cid == 0) {
 
-        alert("hello")
-        document.getElementById('message4').innerHTML = "Please Enter City";
-        return false;
-     }
-     else
-     {
-         document.getElementById('cityid').style.borderColor = "";
-         document.getElementById('message4').innerHTML = "";
-     }
-}
+            alert("hello")
+            document.getElementById('message4').innerHTML = "Please Enter City";
+            return false;
+        }
+        else {
+            document.getElementById('cityid').style.borderColor = "";
+            document.getElementById('message4').innerHTML = "";
+        }
+    }
 
 </script>
 
