@@ -307,9 +307,9 @@ def avedata(request):
         query4 = "select id from eventreg WHERE mobile=('%d')"%(mobile)
         cursor.execute(query4)
         rec = cursor.fetchone()
-
-        query1 = "insert into address(raddress,areaid,prid) VALUES ('%s','%d','%d')"%(raddress,area,rec[0])
-        query2 = "insert into address(caddress,areaid,prid) VALUES ('%s','%d','%d')"%(caddress,carea,rec[0])
+        print(rec[0])
+        query1 = "insert into address(raddress,areaid,eid) VALUES ('%s','%d','%d')"%(raddress,area,rec[0])
+        query2 = "insert into address(caddress,areaid,eid) VALUES ('%s','%d','%d')"%(caddress,carea,rec[0])
         cursor.execute(query2)
         cursor.execute(query1)
         conn.commit()
