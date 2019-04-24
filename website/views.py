@@ -99,7 +99,8 @@ def logindata(request):
         password=request.GET.get("password")
         designation = request.GET.get("designation")
         gmail = request.GET.get('e')
-        encPassword=hash_string(password)
+        if(password):
+            encPassword=hash_string(password)
         print(gmail,password,designation)
         conn = mysql.connector.connect(host='localhost', database='gueta', user='root', password='root', port='3307')
         cursor = conn.cursor()
